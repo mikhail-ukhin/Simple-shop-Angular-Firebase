@@ -10,14 +10,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">Корзина</a>
       </li>
-      <li ngbDropdown class="nav-item dropdown" >
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">[Имя пользователя]</a>
+      <ng-template #anonimousUser>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Вход</a>
+        </li>
+      </ng-template>
+
+      <li *ngIf="auth.$user | async as user; else anonimousUser" ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.displayName }}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/my/orders">Мои заказы</a>
           <a class="dropdown-item" routerLink="/admin/orders">Управление заказами</a>
-          <a class="dropdown-item" routerLink="/admin/products">Управление продуктами</a>
-          <a class="dropdown-item">Выход</a>
+          <a class="dropdown-item" routerink="/admin/products">Управление продуктами</a>
+          <a class="dropdown-item" (click)="logout()">Выход</a>
         </div>
       </li>
     </ul>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +17,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
       { path: 'my/orders', component: MyOrdersComponent }
     ])
   ],
-  providers: [],
+  providers: [AngularFireAuth,
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
