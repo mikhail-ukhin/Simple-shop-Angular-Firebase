@@ -3,6 +3,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { AngularFireObject } from 'angularfire2/database/interfaces';
 import { Observable } from 'rxjs/Observable';
+import { AppUser } from '../../models/app.user';
 
 
 @Injectable()
@@ -23,8 +24,3 @@ export class UserService {
 
 }
 
-export interface AppUser {
-  name: string;
-  email: string;
-  isAdmin: boolean;
-}
