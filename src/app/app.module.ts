@@ -5,6 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -23,6 +24,7 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { UserService } from './services/user/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './services/category/category.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
       AuthService,
       AuthGuardService,
       AdminAuthGuardService,
-      UserService
+      UserService,
+      CategoryService
     ],
   bootstrap: [AppComponent]
 })
