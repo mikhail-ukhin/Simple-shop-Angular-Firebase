@@ -27,6 +27,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './services/category/category.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'ng2-toastr';
+import { ProductService } from './services/product/product.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ToastModule } from 'ng2-toastr';
       AuthGuardService,
       AdminAuthGuardService,
       UserService,
-      CategoryService
+      CategoryService,
+      ProductService
     ],
   bootstrap: [AppComponent]
 })

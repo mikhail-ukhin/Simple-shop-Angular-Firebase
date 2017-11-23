@@ -3,6 +3,7 @@ import { CategoryService } from '../../services/category/category.service';
 import { Category } from '../../models/app.category';
 import { Observable } from 'rxjs/Observable';
 import { ToastsManager } from 'ng2-toastr';
+import { ProductService } from '../../services/product/product.service';
 
 @Component({
   selector: 'app-product-form',
@@ -16,7 +17,8 @@ export class ProductFormComponent implements OnInit {
   (
     private categoryService: CategoryService,
     private toastr: ToastsManager,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private productService: ProductService
   ) {
     this.categories$ = this.categoryService.getCategories();
     this.toastr.setRootViewContainerRef(vcr);
@@ -27,6 +29,6 @@ export class ProductFormComponent implements OnInit {
 
   save(product) {
     // console.log(product);
-    this.toastr.success(`Поздравляю! Вы заказали ${product.title}`);
+    this.productService.create(product);
   }
 }
