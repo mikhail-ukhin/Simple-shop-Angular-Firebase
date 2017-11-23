@@ -37,22 +37,22 @@ export class AuthService {
 
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(user => {
-      this.userService.save(user.user);
-      this.router.navigate([returnUrl]);
+        this.userService.save(user.user);
+        this.router.navigate([returnUrl]);
       }
-    );
+      );
   }
 
   get appUser$(): Observable<AppUser> {
     return this.$user
-    .switchMap(
-        (user, index) => {
-          if (user) {
-            return this.userService.get(user.uid);
-          }
-
-          return Observable.of(null);
+      .switchMap(
+      (user, index) => {
+        if (user) {
+          return this.userService.get(user.uid);
         }
+
+        return Observable.of(null);
+      }
       );
   }
 }
