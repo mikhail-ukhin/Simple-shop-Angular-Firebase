@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { CategoryService } from '../../services/category/category.service';
 import { Category } from '../../models/app.category';
 import { Observable } from 'rxjs/Observable';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
   selector: 'app-product-form',
@@ -10,13 +11,22 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ProductFormComponent implements OnInit {
 
-  categories$: Observable<Category[]>;
-  constructor(private categoryService: CategoryService) {
+  categories$: Observable<any>;
+  constructor
+  (
+    private categoryService: CategoryService,
+    private toastr: ToastsManager,
+    private vcr: ViewContainerRef
+  ) {
     this.categories$ = this.categoryService.getCategories();
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
   }
 
-
+  save(product) {
+    // console.log(product);
+    this.toastr.success(`Поздравляю! Вы заказали ${product.title}`);
+  }
 }
