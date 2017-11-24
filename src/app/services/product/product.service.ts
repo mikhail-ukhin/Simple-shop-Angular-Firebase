@@ -9,4 +9,13 @@ export class ProductService {
   create(product) {
     this.db.list('/products').push(product);
   }
+
+  getAll() {
+    return this.db.list('/products').snapshotChanges().map(action => {
+      return action.map(item => {
+        const key = item.payload.key;
+        return { $key: key, ...item.payload.val() };
+      });
+    });
+  }
 }
