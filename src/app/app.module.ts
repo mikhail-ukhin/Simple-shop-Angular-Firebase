@@ -6,6 +6,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
+import { ToastModule } from 'ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -26,7 +28,7 @@ import { AdminAuthGuardService } from './services/admin-auth-guard/admin-auth-gu
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './services/category/category.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastModule } from 'ng2-toastr';
+
 import { ProductService } from './services/product/product.service';
 
 @NgModule({
@@ -53,6 +55,7 @@ import { ProductService } from './services/product/product.service';
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     ToastModule.forRoot(),
+    CustomFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },

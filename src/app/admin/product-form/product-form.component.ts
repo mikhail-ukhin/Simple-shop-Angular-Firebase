@@ -28,7 +28,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product) {
-    // console.log(product);
     this.productService.create(product);
+    this.toastr.success('Продукт успешно добавлен!');
   }
 }
