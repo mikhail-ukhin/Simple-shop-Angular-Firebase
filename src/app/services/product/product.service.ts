@@ -10,6 +10,12 @@ export class ProductService {
     this.db.list('/products').push(product);
   }
 
+  get(prodictId) {
+    return this.db.object('/products/' + prodictId).snapshotChanges().map(action => {
+      return { $key: action.key, ...action.payload.val() };
+    });
+  }
+
   getAll() {
     return this.db.list('/products').snapshotChanges().map(action => {
       return action.map(item => {

@@ -4,7 +4,7 @@
 
       <div class="form-group">
         <label for="title">Название:</label>
-        <input #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
+        <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
           Поле "Название" должно быть заполнено.
         </div>
@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="price">Цена:</label>
         <div class="input-group">
-          <input #price="ngModel" [(ngModel)]="_price" name="price" id="price" type="number" class="form-control" required [min]="0.00">
+          <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0.00">
           <span class="input-group-addon">$</span>
         </div>
         <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
@@ -24,7 +24,7 @@
 
       <div class="form-group">
         <label for="category">Категория:</label>
-        <select #category="ngModel" ngModel name="category" id="category" class="form-control" required>
+        <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
           <option value=""></option>
           <option *ngFor="let c of categories$ | async" [value]="c.key">{{ c.payload.val().name }}</option>
         </select>
@@ -35,12 +35,21 @@
 
       <div class="form-group">
         <label for="imageUrl">Ссылка на изображение:</label>
-        <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+        <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
         <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
           <ng-container *ngIf="imageUrl.errors.url">В поле должна быть ссылка</ng-container>
           <ng-container *ngIf="imageUrl.errors.required">Поле "Ссылка на изображение" должно быть заполнено.</ng-container>
         </div>
       </div>
+
+      <!-- <image-upload 
+        [preview]="false" 
+        [maxFileSize]="1048576" 
+        [buttonCaption]="'Добавить изображение'"
+        [clearButtonCaption]="'Удалить'"
+        [class]="'uploadWidget'"
+        [dropBoxMessage]="'Перетащите изображение в сюда'">
+      </image-upload> -->
 
       <button class="btn btn-primary">Сохранить</button>
     </form>
@@ -51,7 +60,7 @@
 
       <div class="card-block">
         <h4 class="card-title">{{ title.value }}</h4>
-        <p class="card-text">{{ price.value | currency:'USD':true }}</p>
+        <p class="card-text">{{ price.value | currency:'USD':true}}</p>
       </div>
 
     </div>

@@ -17,3 +17,26 @@ body {
   .card-block {
     padding: 20px;
   }
+
+  .uploadWidget {
+    background-color: rgb(231, 229, 229);
+    border-radius: 10px;
+    margin:5px;
+    width: 500px;
+}
+
+.uploadWidget .img-ul-upload {
+    background-color: white !important;
+}
+
+.uploadWidget .img-ul-clear {
+    background-color: rgb(78, 78, 78) !important;
+}
+
+.uploadWidget .img-ul-drag-box-msg {
+    color: rgb(122, 122, 122) !important;
+}
+
+.uploadWidget .img-ul-container {
+    background-color: #FF6CAD !important;
+}

@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { ToastModule } from 'ng2-toastr';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -55,6 +56,7 @@ import { ProductService } from './services/product/product.service';
     NgbModule.forRoot(),
     BrowserAnimationsModule,
     ToastModule.forRoot(),
+    ImageUploadModule.forRoot(),
     CustomFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
@@ -68,7 +70,8 @@ import { ProductService } from './services/product/product.service';
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
-      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] }
+      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] }
     ])
   ],
   providers:
