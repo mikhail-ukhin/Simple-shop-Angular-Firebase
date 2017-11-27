@@ -41,17 +41,8 @@
           <ng-container *ngIf="imageUrl.errors.required">Поле "Ссылка на изображение" должно быть заполнено.</ng-container>
         </div>
       </div>
-
-      <!-- <image-upload 
-        [preview]="false" 
-        [maxFileSize]="1048576" 
-        [buttonCaption]="'Добавить изображение'"
-        [clearButtonCaption]="'Удалить'"
-        [class]="'uploadWidget'"
-        [dropBoxMessage]="'Перетащите изображение в сюда'">
-      </image-upload> -->
-
       <button class="btn btn-primary">Сохранить</button>
+      <button *ngIf="productId" type="button" class="btn btn-danger" (click)="delete()">Удалить</button>
     </form>
   </div>
   <div class="col-md-6">
