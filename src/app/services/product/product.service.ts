@@ -16,6 +16,10 @@ export class ProductService {
     });
   }
 
+  update(productId, product) {
+    return this.db.object('/products/' + productId).update(product);
+  }
+
   getAll() {
     return this.db.list('/products').snapshotChanges().map(action => {
       return action.map(item => {

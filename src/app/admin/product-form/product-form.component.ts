@@ -18,6 +18,7 @@ import 'rxjs/add/operator/take';
 export class ProductFormComponent implements OnInit {
   categories$: Observable<any>;
   product: Product = this.product = new Product('', 0, '', '');
+  productId: string;
 
   constructor
     (
@@ -30,15 +31,14 @@ export class ProductFormComponent implements OnInit {
     ) {
     this.categories$ = this.categoryService.getCategories();
     this.toastr.setRootViewContainerRef(vcr);
+    this.productId = this.route.snapshot.paramMap.get('id');
 
-    const id = this.route.snapshot.paramMap.get('id');
-
-    if (id) {
-      this.productService.get(id)
-      .take(1)
-      .subscribe(product => {
-        this.product = product;
-      });
+    if (this.productId) {
+      this.productService.get(this.productId)
+        .take(1)
+        .subscribe(product => {
+          this.product = product;
+        });
     }
   }
 
@@ -46,7 +46,13 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product) {
-    this.productService.create(product);
+
+    if (this.productId) {
+      this.productService.update(this.productId, product);
+    } else {
+      this.productService.create(product);
+    }
+
     this.router.navigate(['/admin/products']);
   }
 
