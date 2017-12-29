@@ -29,7 +29,7 @@ export class ProductFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
     ) {
-    this.categories$ = this.categoryService.getCategories();
+    this.categories$ = this.categoryService.getAll();
     this.toastr.setRootViewContainerRef(vcr);
     this.productId = this.route.snapshot.paramMap.get('id');
 

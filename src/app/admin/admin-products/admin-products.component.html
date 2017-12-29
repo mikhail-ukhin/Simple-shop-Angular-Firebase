@@ -17,7 +17,12 @@
 
     <data-table-column [property]="''">
         <ng-template #dataTableCell let-item="item">
-            <button class="btn btn-link" [routerLink]="['/admin/products/', item.$key]">Редактировать</button> | 
+            <button class="btn btn-link" [routerLink]="['/admin/products/', item.$key]">Редактировать</button> 
+        </ng-template>
+    </data-table-column>
+
+    <data-table-column [property]="''">
+        <ng-template #dataTableCell let-item="item">
             <button class="btn btn-link" (click)="deleteItem(item.$key)">Удалить</button>
         </ng-template>
     </data-table-column>
