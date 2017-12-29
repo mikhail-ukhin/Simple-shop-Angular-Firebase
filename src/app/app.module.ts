@@ -47,8 +47,7 @@ import { DataTableHeader } from 'angular-4-data-table/dist/components/header.com
     AdminOrdersComponent,
     LoginComponent,
     MyOrdersComponent,
-    ProductFormComponent,
-
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

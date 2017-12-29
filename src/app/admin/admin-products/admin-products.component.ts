@@ -27,7 +27,6 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       });
   }
 
-
   filter(value: string) {
     const filteredProducts = value && value !== '' ?
       this.products.filter(product =>
@@ -49,6 +48,12 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     this.tableResourse = new DataTableResource(products);
     this.tableResourse.query({ offset: 0 }).then(items => this.items = items);
     this.tableResourse.count().then(count => this.itemCount = count);
+  }
+
+  deleteItem(productId) {
+    if (confirm('Удалить продукт?')) {
+      this.productService.delete(productId);
+    }
   }
 
   ngOnInit() {
