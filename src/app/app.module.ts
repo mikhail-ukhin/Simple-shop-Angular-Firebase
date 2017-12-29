@@ -29,8 +29,10 @@ import { AdminAuthGuardService } from './services/admin-auth-guard/admin-auth-gu
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './services/category/category.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableModule } from 'angular-4-data-table';
 
 import { ProductService } from './services/product/product.service';
+import { DataTableHeader } from 'angular-4-data-table/dist/components/header.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { ProductService } from './services/product/product.service';
     ToastModule.forRoot(),
     ImageUploadModule.forRoot(),
     CustomFormsModule,
+    DataTableModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
